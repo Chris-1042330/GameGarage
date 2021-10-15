@@ -43,20 +43,10 @@ class ArticleController extends AbstractController
     }
 
     #[Route('/{id}', name: 'article_show', methods: ['GET'])]
-    public function show(Article $article, Request $request, DataTableFactory $dataTableFactory): Response
+    public function show(Article $article, Request $request): Response
     {
-        $table = $dataTableFactory->create()
-            ->add('firstName', TextColumn::class)
-            ->add('lastName', TextColumn::class)
-            ->createAdapter(ArrayAdapter::class, [])
-            ->handleRequest($request);
-
-        if ($table->isCallback()) {
-            return $table->getResponse();
-        }
         return $this->render('article/show.html.twig', [
             'article' => $article,
-            'datatable' => $table
         ]);
     }
 

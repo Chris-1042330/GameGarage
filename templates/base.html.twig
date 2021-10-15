@@ -30,10 +30,17 @@
     </section>
     <body>
         {% block body %}{% endblock %}
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
-
+        <script type="text/javascript" charset="UTF-8">
+            $(document).ready(function(){
+                var table = $('#lijst').DataTable({
+                    "stateSave": true,
+                });
+            });
+        </script>
     </body>
 
 
